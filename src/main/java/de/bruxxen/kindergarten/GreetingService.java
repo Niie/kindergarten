@@ -39,16 +39,7 @@ public class GreetingService
     }
     
     public ArrayList<Adress> getAdresses() {
-    	try {
 			return this.connect.getAdress();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-    }
+	}
 
 }

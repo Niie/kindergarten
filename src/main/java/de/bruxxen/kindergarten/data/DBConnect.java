@@ -13,51 +13,80 @@ import com.mysql.cj.xdevapi.Statement;
 import de.bruxxen.kindergarten.entity.Adress;
 
 public class DBConnect {
-		   // JDBC driver name and database URL
-			Connection connect = null;
+			private Connection connect = null;
+			private PreparedStatement pstmt;
+			private ResultSet rs;
+			static final String username = "kindergarten";
+			static final String password = "password";
+			static final String url = "jdbc:mysql://localhost:3306/kindergarten";
+		   
+			public DBConnect() {
 
-			String url = "jdbc:mysql://localhost:3306/kindergarten";
-
-		   //  Database credentials
-		   static final String username = "kindergarten";
-		   static final String password = "password";
+			}
+		   
+		   private void setConnection() throws Throwable {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+					connect = DriverManager.getConnection(url, username, password);
+		   }
 
 		   
-		   public ArrayList<Adress> getAdress() throws SQLException, ClassNotFoundException {
+		   public ArrayList<Adress> getAdress(){
 			   try {
-				   System.out.println("Connectetd");
-					Class.forName("com.mysql.cj.jdbc.Driver");
-
-					connect = DriverManager.getConnection(url, username, password);
-					 System.out.println("Connection established"+connect);
-
-				} catch (SQLException ex) {
-					System.out.println("in exec");
-					System.out.println(ex.getMessage());
-				}
+				this.setConnection();
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 				ArrayList<Adress> adresses = new ArrayList<Adress>();
-				PreparedStatement pstmt = connect
-						.prepareStatement("select plz, city, street FROM adresses");
-				
-				
-				ResultSet rs = pstmt.executeQuery();
-
-				while (rs.next()) {
-
-					Adress adress = new Adress(rs.getString("street"), rs.getInt("plz"), rs.getString("city"));
-
-					adresses.add(adress);
-
+				try {
+					pstmt = connect.prepareStatement("select plz, city, street FROM adresses");
+					rs = pstmt.executeQuery();
+					while (rs.next()) {
+						Adress adress = new Adress(rs.getString("street"), rs.getInt("plz"), rs.getString("city"));
+						adresses.add(adress);
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
 				}
-
-				// close resources
-				rs.close();
-				pstmt.close();
-				connect.close();
-
+				this.close();
 				return adresses;
 		   }
 		   
+		  private void close(){
+			  try {
+				  this.rs.close();
+				  this.pstmt.close();
+				  this.connect.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		  }
 		  
+		  public ResultSet getResultSet(String sqlStatement) {
+			  try {
+				  this.setConnection();
+				  pstmt = connect.prepareStatement(sqlStatement);
+				  rs = pstmt.executeQuery();
+				  return rs;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (Throwable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			  return null;	  
+		  }
+		  
+		  public String getvalueList(ArrayList values) {
+			  String result = "(";
+			  for (int i = 0; i < values.size(); i++) {
+				  result = result + values.get(i) + ", ";
+			  }
+			  result.substring(result.length()-2);
+			  result = result + ")";
+			  System.out.print(result);
+			  return result;
+		  }
 }

@@ -2,18 +2,32 @@ package de.bruxxen.kindergarten.entity;
 
 public class Adress {
 	private String street, city, addition;
-	private int plz;
+	private int plz, id;
 	
 	public Adress(String street, int plz, String city) {
 		this.street = street;
 		this.plz = plz;
 		this.city = city;
 	}
+	public Adress(int id, String street, int plz, String city) {
+		this.street = street;
+		this.plz = plz;
+		this.city = city;
+		this.id = id;
+	}
 	public Adress(String street, int plz, String city, String addition) {
 		this.street = street;
 		this.plz = plz;
 		this.city = city;
 		this.addition = addition;
+	}
+	public Adress(int id, String street, int plz, String city, String addition) {
+		this.street = street;
+		this.plz = plz;
+		this.city = city;
+		this.addition = addition;
+		this.id = id;
+		
 	}
 	
 	public String getStreet() {
@@ -39,5 +53,11 @@ public class Adress {
 	}
 	public void setPlz(int plz) {
 		this.plz = plz;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 }
