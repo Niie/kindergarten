@@ -6,6 +6,13 @@
 
 	<ui:define name="content">
 		<h2>Test</h2>
+		<h:dataTable value="#{greetingService.getAdresses()}" var="test">
+			<h:column>
+				jo
+				#{test.street}
+			</h:column>
+			</h:dataTable>
+			<h2>Test3</h2>
 
 
 	

@@ -23,7 +23,9 @@
      		</ui:insert>
      	</div>
      	<div id="content">
-	     	<ui:decorate template="/templates/content.xhtml"/>
+	     	<ui:insert name="content">
+     			<ui:decorate template="/templates/footer.xhtml"/>
+     		</ui:insert>
      	</div>
      	<div id="footer">
      		<ui:insert name="footer">

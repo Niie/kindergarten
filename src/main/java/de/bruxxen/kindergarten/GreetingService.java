@@ -19,15 +19,36 @@
 package de.bruxxen.kindergarten;
 
 import javax.inject.Named;
+
+import de.bruxxen.kindergarten.data.DBConnect;
+import de.bruxxen.kindergarten.entity.Adress;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.enterprise.context.ApplicationScoped;
 
 @Named
 @ApplicationScoped
 public class GreetingService
 {
+	private DBConnect connect = new DBConnect();
     public String createGreeting(String name)
     {
         return "Hello " + name + ". We hope you enjoy Apache MyFaces!";
+    }
+    
+    public ArrayList<Adress> getAdresses() {
+    	try {
+			return this.connect.getAdress();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
     }
 
 }
