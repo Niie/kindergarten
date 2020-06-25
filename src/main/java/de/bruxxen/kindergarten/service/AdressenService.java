@@ -21,14 +21,16 @@ public class AdressenService implements Serializable {
 	private Adress emptyAdress = new Adress();
 	@Inject
 	private User user;
-	
-	public ArrayList<Adress> getTmpAdresses() {
-		this.tmpAdresses.clear();
+
+	public AdressenService() {
 		try {
-			this.tmpAdresses.add(this.dbAdressen.getAdress(this.user.getTmpID()));
+			this.tmpAdresses = this.dbAdressen.getAdress();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public ArrayList<Adress> getTmpAdresses() {
 		return tmpAdresses;
 	}
 	public void setTmpAdresses(ArrayList<Adress> tmpAdresses) {
@@ -40,10 +42,18 @@ public class AdressenService implements Serializable {
 	public void setEmptyAdress(Adress emptyAdress) {
 		this.emptyAdress = emptyAdress;
 	}
+	public ArrayList<Adress> getAdress(int id) {
+		try {
+			this.tmpAdresses = this.dbAdressen.getAdress(id); 
+			return this.tmpAdresses;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 	public ArrayList<Adress> getAdress() {
 		try {
-			this.tmpAdresses.clear();
-			this.tmpAdresses.add(this.dbAdressen.getAdress(this.user.getTmpID())); 
+			this.tmpAdresses = this.dbAdressen.getAdress(); 
 			return this.tmpAdresses;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -55,8 +65,16 @@ public class AdressenService implements Serializable {
 			this.dbAdressen.updateAdress(a);
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		
+		}	
+	}
+	public String updateAdress(Adress a, String nav) {
+		try {
+			this.dbAdressen.updateAdress(a);
+			this.tmpAdresses = this.dbAdressen.getAdress();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		return nav;
 	}
 	public void insertAdress(Adress a) {
 		try {

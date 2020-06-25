@@ -19,8 +19,12 @@
 					<p:inputText id="plz" value="#{adress.plz}"/>
 					<p:outputLabel value="Info:" for="info"/>
 					<p:inputTextarea id="info" value="#{adress.addition}"/>	
-					<p:commandButton value="Speichern" action="#{adressenService.updateAdress(adress)}"/>
-					<p:commandButton value="Löschen" action="#{adressenService.deleteAdress(adress)}"/>				
+					<p:panelGrid/>
+					<p:panelGrid>
+						<p:commandButton value="Speichern" action="#{adressenService.updateAdress(adress, 'listAdresse.xhtml')}"/>
+						<p:commandButton value="Zurück" action="#{listAdressenService.navListAdresse()}"/>
+						<p:commandButton value="Löschen" action="#{adressenService.deleteAdress(adress)}"/>	
+					</p:panelGrid>		
 				</h:panelGrid>				
 				</p:column>
 			</p:dataTable>

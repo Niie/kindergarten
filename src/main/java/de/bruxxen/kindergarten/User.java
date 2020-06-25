@@ -12,7 +12,7 @@ import de.bruxxen.kindergarten.entity.Adress;
 @SessionScoped
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private int tmpID = 2;
+	private int tmpID = 0;
 	
 	public int getTmpID() {
 		return tmpID;

@@ -7,6 +7,7 @@
       <h:outputStylesheet library="css" name="header.css"  />     
       <h:panelGroup styleClass="headerWrapper">
       	<br/>
+      	<h:form>
       	<h:link value="Aktuelles" outcome="impressum.xhtml" styleClass="headerLink" />
       	<h:outputText value=" || "></h:outputText>
       	<h:link value="Unser Kindergarten" outcome="impressum.xhtml" styleClass="headerLink" />
@@ -16,7 +17,9 @@
       	<h:link value="Elternbereich" outcome="impressum.xhtml" styleClass="headerLink" />
       	<h:outputText value=" || "></h:outputText>
       	<h:link value="editAdresse" outcome="editAdresse.xhtml" styleClass="headerLink" />
-      
+      	<h:outputText value=" || "></h:outputText>
+      	<h:commandLink value="listAdresse" action="#{listAdressenService.navListAdresse()}" styleClass="headerLink" />
+     	</h:form>											 
       </h:panelGroup>
       
 </ui:composition>
