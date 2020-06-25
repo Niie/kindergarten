@@ -6,9 +6,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 	<ui:define name="content">
-		<h2>editAdresse</h2>
+		<h2>insertAdresse</h2>
 			<h:form>
-			<p:dataTable value="#{adressenService.tmpAdresses}" var="adress" rows="2">
+			<p:dataTable value="#{adressenService.emptyAdress}" var="adress" rows="2">
 				<p:column>
 				<h:panelGrid columns="2">
 					<p:outputLabel value="Straße:" for="street"/>
@@ -19,8 +19,7 @@
 					<p:inputText id="plz" value="#{adress.plz}"/>
 					<p:outputLabel value="Info:" for="info"/>
 					<p:inputTextarea id="info" value="#{adress.addition}"/>	
-					<p:commandButton value="Speichern" action="#{adressenService.updateAdress(adress)}"/>
-					<p:commandButton value="Löschen" action="#{adressenService.deleteAdress(adress)}"/>				
+					<p:commandButton value="Einfügen" action="#{adressenService.insertAdress(adress)}"/>		
 				</h:panelGrid>				
 				</p:column>
 			</p:dataTable>

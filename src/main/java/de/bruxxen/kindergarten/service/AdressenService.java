@@ -18,14 +18,27 @@ public class AdressenService implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private DBAdresses dbAdressen = new DBAdresses();
 	private ArrayList<Adress> tmpAdresses = new ArrayList<Adress>();
+	private Adress emptyAdress = new Adress();
 	@Inject
 	private User user;
 	
 	public ArrayList<Adress> getTmpAdresses() {
+		this.tmpAdresses.clear();
+		try {
+			this.tmpAdresses.add(this.dbAdressen.getAdress(this.user.getTmpID()));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return tmpAdresses;
 	}
 	public void setTmpAdresses(ArrayList<Adress> tmpAdresses) {
 		this.tmpAdresses = tmpAdresses;
+	}
+	public Adress getEmptyAdress() {
+		return emptyAdress;
+	}
+	public void setEmptyAdress(Adress emptyAdress) {
+		this.emptyAdress = emptyAdress;
 	}
 	public ArrayList<Adress> getAdress() {
 		try {
@@ -44,5 +57,15 @@ public class AdressenService implements Serializable {
 			e.printStackTrace();
 		}
 		
+	}
+	public void insertAdress(Adress a) {
+		try {
+			this.dbAdressen.insertAdress(a);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+	}
+	public void deleteAdress(Adress a) {
+		this.dbAdressen.deleteAdress(a);	
 	}
 }

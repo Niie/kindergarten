@@ -40,12 +40,13 @@ public class DBAdresses {
 		return adress;
 	}
 	public void insertAdress(Adress a) throws SQLException{
-		ArrayList<Adress> adresses = new ArrayList<Adress>();
-		String sql = "INSERT INTO adresses VALUES (" + a.getStreet() + ", "+
-														a.getPlz() + ", " +
-														a.getCity() + ", " +
-														a.getAddition() + ");";
-		this.connect.getResultSet(sql);
+		String sql = "INSERT INTO adresses (street, plz, city, addition) VALUES ('" +
+				  										a.getStreet() + "', '"+
+														a.getPlz() + "', '" +
+														a.getCity() + "', '" +
+														a.getAddition() + "');";
+		System.out.print(sql);
+		this.connect.insertSet(sql);
 		this.connect.close();
 	}
 	public void updateAdress(Adress a) throws SQLException{
@@ -54,9 +55,12 @@ public class DBAdresses {
 											"city = '" +	a.getCity() + "', " +
 											"addition = '" +a.getAddition() + "'"+
 											"WHERE id = " + a.getId();
-		System.out.print(sql);
 		this.connect.updateSet(sql);
 		this.connect.close();
 	}
-
+	public void deleteAdress(Adress a) {
+		String sql = "DELETE FROM adresses WHERE id = '" + a.getId() + "';";
+		this.connect.deleteSet(sql);
+		this.connect.close();
+	}
 }

@@ -88,4 +88,26 @@ public class DBConnect {
 				e.printStackTrace();
 			}
 		  }
+		  public void insertSet(String sql) {
+			  try {
+				  this.setConnection();
+				  this.stm = this.connect.createStatement();
+				  this.stm.execute(sql);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Throwable e) {
+				e.printStackTrace();
+			}
+		  }
+		public void deleteSet(String sql) {
+			try {
+				  this.setConnection();
+				  this.stm = this.connect.createStatement();
+				  this.stm.execute(sql);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Throwable e) {
+				e.printStackTrace();
+			}			
+		}
 }

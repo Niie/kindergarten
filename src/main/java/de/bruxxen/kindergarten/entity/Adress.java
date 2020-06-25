@@ -4,6 +4,12 @@ public class Adress {
 	private String street, city, addition;
 	private int plz, id;
 	
+	public Adress() {
+		this.street = "";
+		this.plz = 0;
+		this.city = "";
+		this.addition = "";
+	}
 	public Adress(String street, int plz, String city) {
 		this.street = street;
 		this.plz = plz;
