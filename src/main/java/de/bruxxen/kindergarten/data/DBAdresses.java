@@ -49,12 +49,13 @@ public class DBAdresses {
 		this.connect.close();
 	}
 	public void updateAdress(Adress a) throws SQLException{
-		String sql = "UPDATE adresses SET (street = " + a.getStreet() + ", "+
-											"plz = " +	a.getPlz() + ", " +
-											"city = " +	a.getCity() + ", " +
-											"addition = " +a.getAddition() + ")"+
-											"WHERE id == " + a.getId();
-		this.connect.getResultSet(sql);
+		String sql = "UPDATE adresses SET street = '" + a.getStreet() + "', "+
+											"plz = '" +	a.getPlz() + "', " +
+											"city = '" +	a.getCity() + "', " +
+											"addition = '" +a.getAddition() + "'"+
+											"WHERE id = " + a.getId();
+		System.out.print(sql);
+		this.connect.updateSet(sql);
 		this.connect.close();
 	}
 

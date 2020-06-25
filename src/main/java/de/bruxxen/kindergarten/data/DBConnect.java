@@ -81,7 +81,7 @@ public class DBConnect {
 			  try {
 				  this.setConnection();
 				  this.stm = this.connect.createStatement();
-				  this.stm.executeUpdate(sqlStatement);
+				  this.stm.execute(sqlStatement);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (Throwable e) {
