@@ -12,20 +12,13 @@ import de.bruxxen.kindergarten.entity.Adress;
 @SessionScoped
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
-	private Adress adresse = new Adress("T", 1, "T");
-	private DBAdresses dbAdresses = new DBAdresses();
-
-
-	public Adress getAdresse() {
-		this.adresse = this.dbAdresses.getAdress(1);
-		if(this.adresse == null) {
-			
-			return new Adress("Jabai", 12998, "Bruizze");
-		}else {	return adresse;}
+	private int tmpID = 1;
+	
+	public int getTmpID() {
+		return tmpID;
 	}
-
-	public void setAdresse(Adress adresse) {
-		this.adresse = adresse;
+	public void setTmpID(int tmpID) {
+		this.tmpID = tmpID;
 	}
 	
 	

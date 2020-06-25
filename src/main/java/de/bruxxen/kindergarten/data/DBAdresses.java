@@ -9,35 +9,53 @@ import de.bruxxen.kindergarten.entity.Adress;
 public class DBAdresses {
 	private DBConnect connect = new DBConnect();
 	
-	public Adress getAdress(int id) {
-		ResultSet rs = this.connect.getResultSet("select id, plz, city, street, addition FROM adresses WHERE id = '1'");
-		try {
-			if(rs != null) {
-				if(rs.next()) {
-					Adress adress = new Adress(rs.getInt("id"), rs.getString("street"), rs.getInt("plz"), rs.getString("city"), rs.getString("addition"));
-					return adress;
-				}
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+	public ArrayList<Adress> getAllAdresses() throws SQLException{
+		ArrayList<Adress> adresses = new ArrayList<Adress>();
+		String sql = "SELECT * FROM adresses";
+		ResultSet rs = this.connect.getResultSet(sql);
+		
+		
+		while (rs.next()) {
+			Adress adress = new Adress(rs.getInt("id"), 
+										rs.getString("street"), 
+										rs.getInt("plz"), 
+										rs.getString("city"),rs.getString("addition"));
+			adresses.add(adress);
 		}
-		return null;
+		this.connect.close();
+		return adresses;
 	}
-	public void setAdress(Adress adress) {
-		ArrayList<String> aList = new ArrayList<String>(); 
-		aList.add(adress.getStreet());
-		aList.add(adress.getCity());
-		aList.add(String.valueOf(adress.getPlz()));
-		aList.add(adress.getAddition());
-		String values = this.connect.getvalueList(aList);
-		ResultSet rs;
-		if(adress.getId() != 0) {
-			rs = this.connect.getResultSet("INSERT INTO adresses (street, city, plz, addition) VALUES " + values);
+	public Adress getAdress(int id) throws SQLException{
+		String sql = "SELECT * FROM adresses WHERE " + id;
+		ResultSet rs = this.connect.getResultSet(sql);	
+		Adress adress = null;
+		while (rs.next()) {
+			adress = new Adress(rs.getInt("id"), 
+										rs.getString("street"), 
+										rs.getInt("plz"), 
+										rs.getString("city"),
+										rs.getString("addition"));
 		}
-		
-		
-	//	"INSERT INTO adresses (street, city, plz, addition) VALUES(1, "A", 19) ON DUPLICATE KEY UPDATE    
-		//name="A", age=19
+		this.connect.close();
+		return adress;
+	}
+	public void insertAdress(Adress a) throws SQLException{
+		ArrayList<Adress> adresses = new ArrayList<Adress>();
+		String sql = "INSERT INTO adresses VALUES (" + a.getStreet() + ", "+
+														a.getPlz() + ", " +
+														a.getCity() + ", " +
+														a.getAddition() + ");";
+		this.connect.getResultSet(sql);
+		this.connect.close();
+	}
+	public void updateAdress(Adress a) throws SQLException{
+		String sql = "UPDATE adresses SET (street = " + a.getStreet() + ", "+
+											"plz = " +	a.getPlz() + ", " +
+											"city = " +	a.getCity() + ", " +
+											"addition = " +a.getAddition() + ")"+
+											"WHERE id == " + a.getId();
+		this.connect.getResultSet(sql);
+		this.connect.close();
 	}
 
 }

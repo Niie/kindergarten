@@ -8,19 +8,25 @@
 	<ui:define name="content">
 		<h2>editAdresse</h2>
 			<h:form>
-			<p:panelGrid columns="2">
-			<f:facet name="header">Adresse:</f:facet>
-				<p:outputLabel for="street" value="Straße:"/>
-				<p:inputText id="street" required="true" value="#{user.adresse.street}"/>
-				<p:outputLabel for="city" value="Ort:"/>
-				<p:inputText id="city" required="true" value="#{user.adresse.city}"/>
-				<p:outputLabel for="plz" value="PLZ:"/>
-				<p:inputText id="plz" required="true" value="#{user.adresse.plz}"/>
-				<p:outputLabel for="info" value="Zusatz:"/>
-				<p:inputTextarea id="info" rows="5" cols="30" value="#{user.adresse.addition}"/>	
-				<p:panelGrid/>
-				<p:commandButton/>
-				</p:panelGrid>
+			<p:dataTable value="#{adressenService.getAdress()}" var="adress" rows="2">
+				<p:column>
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Straße:" for="street"/>
+					<p:inputText id="street" value="#{adress.street}"/>
+					<p:outputLabel value="Stadt:" for="city"/>
+					<p:inputText id="city" value="#{adress.city}"/>
+					<p:outputLabel value="PLZ:" for="plz"/>
+					<p:inputText id="plz" value="#{adress.plz}"/>
+					<p:outputLabel value="Info:" for="info"/>
+					<p:inputTextarea id="info" value="#{adress.addition}"/>	
+					<p:commandButton value="Speichern" action="#{adressenService.updateAdress(adress)}"/>		
+				</h:panelGrid>				
+				</p:column>
+			</p:dataTable>
+			
+			
+			
+
 			</h:form>
 	</ui:define>
 </ui:composition>
