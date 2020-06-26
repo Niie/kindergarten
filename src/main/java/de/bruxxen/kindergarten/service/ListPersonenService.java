@@ -6,6 +6,7 @@ import javax.inject.Named;
 
 import de.bruxxen.kindergarten.User;
 import de.bruxxen.kindergarten.entity.Person;
+import de.bruxxen.kindergarten.entity.PhoneNumber;
 
 @Named
 @RequestScoped
@@ -14,9 +15,12 @@ public class ListPersonenService {
 	User user;
 	@Inject
 	PersonenService pService;
+	@Inject
+	PhoneNumberService pnService;
 
-	public String navEditPerson(Person a) {
-		this.pService.setTmpPersons(this.pService.getPerson(a.getId()));
+	public String navEditPerson(Person p) {
+		this.pService.setTmpPersons(this.pService.getPerson(p.getId()));
+		this.pnService.setTmpPhoneNumbers(p);
 		return "editPerson.xhtml";	
 	}
 	public String navListPerson() {

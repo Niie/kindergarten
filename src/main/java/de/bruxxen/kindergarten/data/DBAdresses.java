@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import de.bruxxen.kindergarten.entity.Adress;
+import de.bruxxen.kindergarten.entity.Person;
 
 public class DBAdresses {
 	private DBConnect connect = new DBConnect();
@@ -42,6 +43,7 @@ public class DBAdresses {
 		this.connect.close();
 		return resultArray;
 	}
+
 	public ArrayList<Adress> getAdress() throws SQLException{
 		String sql = "SELECT * FROM adresses";
 		ResultSet rs = this.connect.getResultSet(sql);	

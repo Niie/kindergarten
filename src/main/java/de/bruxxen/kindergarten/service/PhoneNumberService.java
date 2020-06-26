@@ -10,6 +10,7 @@ import javax.inject.Named;
 
 import de.bruxxen.kindergarten.User;
 import de.bruxxen.kindergarten.data.DBPhoneNumbers;
+import de.bruxxen.kindergarten.entity.Person;
 import de.bruxxen.kindergarten.entity.PhoneNumber;
 
 @Named
@@ -30,16 +31,23 @@ public class PhoneNumberService implements Serializable {
 		}
 	}
 	
-	public ArrayList<PhoneNumber> gettmpPhoneNumbers() {
+	public ArrayList<PhoneNumber> getTmpPhoneNumbers() {
 		return tmpPhoneNumbers;
 	}
 	public void setTmpPhoneNumbers(ArrayList<PhoneNumber> tmpPhoneNumbers) {
 		this.tmpPhoneNumbers = tmpPhoneNumbers;
 	}
-	public PhoneNumber getemptyPhoneNumber() {
+	public void setTmpPhoneNumbers(Person p) {
+		try {
+			this.tmpPhoneNumbers = this.DBPhoneNumbers.getAllPhoneNumbersFromPerson(p);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public PhoneNumber getEmptyPhoneNumber() {
 		return emptyPhoneNumber;
 	}
-	public void setemptyPhoneNumber(PhoneNumber emptyPhoneNumber) {
+	public void setEmptyPhoneNumber(PhoneNumber emptyPhoneNumber) {
 		this.emptyPhoneNumber = emptyPhoneNumber;
 	}
 	public ArrayList<PhoneNumber> getPhoneNumber(int id) {

@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import de.bruxxen.kindergarten.entity.Person;
 import de.bruxxen.kindergarten.entity.PhoneNumber;
 
 public class DBPhoneNumbers {
@@ -23,8 +24,23 @@ public class DBPhoneNumbers {
 		this.connect.close();
 		return resultArray;
 	}
-	public ArrayList<PhoneNumber> getAllPhoneNumbersFromPerson(int id) throws SQLException{
-		String sql = "SELECT * FROM phoneNumbers WHERE id_person =" + id;
+	public ArrayList<PhoneNumber> getPhoneNumber(Person p) throws SQLException{
+		ArrayList<PhoneNumber> resultArray = new ArrayList<PhoneNumber>();
+		String sql = "SELECT * FROM phoneNumbers WHERE id_person =" + p.getId();
+		ResultSet rs = this.connect.getResultSet(sql);	
+		PhoneNumber pn = null;
+		while (rs.next()) {
+			pn = new PhoneNumber(rs.getInt("id"), 
+										rs.getString("phoneNumber"), 
+										rs.getInt("id_person"));
+			resultArray.add(pn);	
+		}
+		this.connect.close();
+		return resultArray;
+	}
+	
+	public ArrayList<PhoneNumber> getAllPhoneNumbersFromPerson(Person p) throws SQLException{
+		String sql = "SELECT * FROM phoneNumbers WHERE id_person =" + p.getId();
 		ResultSet rs = this.connect.getResultSet(sql);	
 		ArrayList<PhoneNumber> resultArray = new ArrayList<PhoneNumber>();
 		PhoneNumber pn = null;

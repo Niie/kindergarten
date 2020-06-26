@@ -15,7 +15,16 @@
 					<p:inputText id="firstName" value="#{person.firstName}"/>
 					<p:outputLabel value="Nachname:" for="lastName"/>
 					<p:inputText id="lastName" value="#{person.lastName}"/>
-		
+					<h:panelGrid/>
+					<p:dataTable value="#{phoneNumberService.tmpPhoneNumbers}" var="phoneNumber">
+					<f:facet name = "header">
+						<h:outputText value = "Telefonnummern:"/>
+						</f:facet>	
+					<p:column>	
+						<p:outputLabel value="#{phoneNumber.phoneNumber}"/>
+						<p:commandButton value="Bearbeiten" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>					
+						</p:column>
+					</p:dataTable>
 					<p:panelGrid/>
 					<p:panelGrid>
 						<p:commandButton value="Speichern" action="#{personenService.updatePerson(person, 'listPerson.xhtml')}"/>
