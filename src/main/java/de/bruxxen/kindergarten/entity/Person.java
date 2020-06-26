@@ -3,22 +3,28 @@ package de.bruxxen.kindergarten.entity;
 import java.util.ArrayList;
 
 public class Person {
-	private String lastName, sureName, mail;
+	private int id;
+	private String lastName, firstName, mail;
 	private Adress adress;
-	private int phoneNumber;
+	private ArrayList<Integer> phoneNumbers;
 	private ArrayList<Relation> relations;
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getSureName() {
-		return sureName;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setSureName(String sureName) {
-		this.sureName = sureName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	public String getMail() {
 		return mail;
@@ -32,11 +38,11 @@ public class Person {
 	public void setAdress(Adress adress) {
 		this.adress = adress;
 	}
-	public int getPhoneNumber() {
-		return phoneNumber;
+	public ArrayList<Integer> getPhoneNumbers() {
+		return phoneNumbers;
 	}
-	public void setPhoneNumber(int phoneNumber) {
-		this.phoneNumber = phoneNumber;
+	public void setPhoneNumbers(ArrayList<Integer> phoneNumbers) {
+		this.phoneNumbers = phoneNumbers;
 	}
 	public ArrayList<Relation> getRelations() {
 		return relations;
@@ -44,5 +50,6 @@ public class Person {
 	public void setRelations(ArrayList<Relation> relations) {
 		this.relations = relations;
 	}
+	
 
 }

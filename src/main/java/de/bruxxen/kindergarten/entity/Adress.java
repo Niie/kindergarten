@@ -2,7 +2,7 @@ package de.bruxxen.kindergarten.entity;
 
 public class Adress {
 	private String street, city, addition;
-	private int plz, id;
+	private int plz, id, personId;
 	
 	public Adress() {
 		this.street = "";
@@ -65,5 +65,11 @@ public class Adress {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getPersonId() {
+		return personId;
+	}
+	public void setPersonId(int personId) {
+		this.personId = personId;
 	}
 }

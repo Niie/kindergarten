@@ -64,7 +64,6 @@ public class DBAdresses {
 														a.getPlz() + "', '" +
 														a.getCity() + "', '" +
 														a.getAddition() + "');";
-		System.out.print(sql);
 		this.connect.insertSet(sql);
 		this.connect.close();
 	}
