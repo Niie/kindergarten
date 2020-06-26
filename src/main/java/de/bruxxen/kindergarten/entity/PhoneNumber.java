@@ -1,9 +1,12 @@
 package de.bruxxen.kindergarten.entity;
 
 public class PhoneNumber {
-	private int id, phoneNumber, id_person;
-	
-	public PhoneNumber(int id, int phoneNumber, int id_person) {
+	private int id, id_person;
+	String phoneNumber;
+	public PhoneNumber() {
+		
+	}
+	public PhoneNumber(int id, String phoneNumber, int id_person) {
 		this.id = id;
 		this.phoneNumber = phoneNumber;
 		this.id_person = id_person;
@@ -17,11 +20,11 @@ public class PhoneNumber {
 		this.id = id;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

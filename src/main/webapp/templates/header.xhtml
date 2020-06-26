@@ -16,9 +16,11 @@
       	<h:outputText value=" || "></h:outputText>
       	<h:link value="Elternbereich" outcome="impressum.xhtml" styleClass="headerLink" />
       	<h:outputText value=" || "></h:outputText>
-      	<h:link value="editAdresse" outcome="editAdresse.xhtml" styleClass="headerLink" />
+		<h:commandLink value="listPhoneNumbers" action="#{listPhoneNumberService.navListPhoneNumber()}" styleClass="headerLink" />
       	<h:outputText value=" || "></h:outputText>
       	<h:commandLink value="listAdresse" action="#{listAdressenService.navListAdresse()}" styleClass="headerLink" />
+      	<h:outputText value=" || "></h:outputText>
+      	<h:commandLink value="listPerson" action="#{listPersonenService.navListPerson()}" styleClass="headerLink" />
      	</h:form>											 
       </h:panelGroup>
       

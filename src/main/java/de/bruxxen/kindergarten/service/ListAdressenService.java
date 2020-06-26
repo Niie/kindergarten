@@ -23,4 +23,7 @@ public class ListAdressenService {
 		this.aService.setTmpAdresses(this.aService.getAdress());
 		return "listAdresse.xhtml";	
 	}
+	public String navNewAdresse() {
+		return "insertAdresse.xhtml";	
+	}
 }

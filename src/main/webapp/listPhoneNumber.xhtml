@@ -8,16 +8,15 @@
 	<ui:define name="content">
 		<h2>editAdresse</h2>
 			<h:form>
-			<p:dataTable value="#{adressenService.tmpAdresses}" var="adress">
+			<p:dataTable value="#{phoneNumberService.tmpPhoneNumbers}" var="phoneNumber">
 				<p:column>
-				<h:panelGrid columns="4">
-					<h:outputText value="#{adress.street} in #{adress.plz} #{adress.city}"/>
-						
-					<p:commandButton value="Bearbeiten" action="#{listAdressenService.navEditAdress(adress)}"/>			
+				<h:panelGrid columns="2">
+					<h:outputText value="Telefonnummer: #{phoneNumber.phoneNumber}"/>					
+					<p:commandButton value="Bearbeiten" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>		
 				</h:panelGrid>				
 				</p:column>
 			</p:dataTable>
-			<p:commandButton value="Neue Adresse" action="#{listAdressenService.navNewAdresse()}"/>	
+			<p:commandButton value="Neue Nummer" action="#{listPhoneNumberService.navNewPhoneNumber()}"/>	
 			</h:form>
 	</ui:define>
 </ui:composition>

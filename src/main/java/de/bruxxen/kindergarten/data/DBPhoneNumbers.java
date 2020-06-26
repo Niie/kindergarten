@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import de.bruxxen.kindergarten.entity.Adress;
 import de.bruxxen.kindergarten.entity.PhoneNumber;
 
 public class DBPhoneNumbers {
@@ -17,7 +16,7 @@ public class DBPhoneNumbers {
 		PhoneNumber pn = null;
 		while (rs.next()) {
 			pn = new PhoneNumber(rs.getInt("id"), 
-										rs.getInt("phoneNumber"), 
+										rs.getString("phoneNumber"), 
 										rs.getInt("id_person"));
 			resultArray.add(pn);	
 		}
@@ -31,7 +30,7 @@ public class DBPhoneNumbers {
 		PhoneNumber pn = null;
 		while (rs.next()) {
 			pn = new PhoneNumber(rs.getInt("id"), 
-										rs.getInt("phoneNumber"), 
+										rs.getString("phoneNumber"), 
 										rs.getInt("id_person"));
 			resultArray.add(pn);	
 		}
@@ -45,7 +44,7 @@ public class DBPhoneNumbers {
 		PhoneNumber pn = null;
 		while (rs.next()) {
 			pn = new PhoneNumber(rs.getInt("id"), 
-										rs.getInt("phoneNumber"), 
+										rs.getString("phoneNumber"), 
 										rs.getInt("id_person"));
 			resultArray.add(pn);			
 		}
@@ -53,7 +52,7 @@ public class DBPhoneNumbers {
 		return resultArray;
 	}
 	public void insertPhoneNumber(PhoneNumber pn) throws SQLException{
-		String sql = "INSERT INTO phoneNumbers (phoneNumbers, id_person) VALUES ('" +
+		String sql = "INSERT INTO phoneNumbers (phoneNumber, id_person) VALUES ('" +
 														pn.getPhoneNumber() + "', '"+
 														pn.getId_person() + "');";
 		this.connect.insertSet(sql);

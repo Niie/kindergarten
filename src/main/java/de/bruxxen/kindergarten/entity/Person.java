@@ -5,9 +5,19 @@ import java.util.ArrayList;
 public class Person {
 	private int id;
 	private String lastName, firstName, mail;
-	private Adress adress;
-	private ArrayList<Integer> phoneNumbers;
+	private ArrayList<Adress> adresses;
+	private ArrayList<PhoneNumber> phoneNumbers;
 	private ArrayList<Relation> relations;
+	
+	public Person() {
+	}
+	public Person(int id, String lastName, String firstName) {
+		this.id = id;
+		this.lastName = lastName;
+		this.firstName = firstName;
+	}
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -32,16 +42,16 @@ public class Person {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	public Adress getAdress() {
-		return adress;
+	public ArrayList<Adress> getAdresses() {
+		return adresses;
 	}
-	public void setAdress(Adress adress) {
-		this.adress = adress;
+	public void setAdresses(ArrayList<Adress> adresses) {
+		this.adresses = adresses;
 	}
-	public ArrayList<Integer> getPhoneNumbers() {
+	public ArrayList<PhoneNumber> getPhoneNumbers() {
 		return phoneNumbers;
 	}
-	public void setPhoneNumbers(ArrayList<Integer> phoneNumbers) {
+	public void setPhoneNumbers(ArrayList<PhoneNumber> phoneNumbers) {
 		this.phoneNumbers = phoneNumbers;
 	}
 	public ArrayList<Relation> getRelations() {
@@ -50,6 +60,7 @@ public class Person {
 	public void setRelations(ArrayList<Relation> relations) {
 		this.relations = relations;
 	}
+
 	
 
 }

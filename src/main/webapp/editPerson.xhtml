@@ -1,0 +1,30 @@
+<ui:composition template="templates/mainTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:p="http://primefaces.org/ui"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="content">
+		<h2>editAdresse</h2>
+			<h:form>
+			<p:dataTable value="#{personenService.tmpPersons}" var="person" rows="2">
+				<p:column>
+				<h:panelGrid columns="2">
+					<p:outputLabel value="Vorname:" for="firstName"/>
+					<p:inputText id="firstName" value="#{person.firstName}"/>
+					<p:outputLabel value="Nachname:" for="lastName"/>
+					<p:inputText id="lastName" value="#{person.lastName}"/>
+		
+					<p:panelGrid/>
+					<p:panelGrid>
+						<p:commandButton value="Speichern" action="#{personenService.updatePerson(person, 'listPerson.xhtml')}"/>
+						<p:commandButton value="Zurück" action="#{listPersonenService.navListPerson()}"/>
+						<p:commandButton value="Löschen" action="#{personenService.deletePerson(person)}"/>	
+					</p:panelGrid>		
+				</h:panelGrid>				
+				</p:column>
+			</p:dataTable>
+			</h:form>
+	</ui:define>
+</ui:composition>

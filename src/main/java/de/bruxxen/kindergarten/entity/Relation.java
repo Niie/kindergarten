@@ -1,13 +1,19 @@
 package de.bruxxen.kindergarten.entity;
 
 public class Relation {
-	private Person toPerson;
+	private Person a, b;
 	private String relationshipt;
-	public Person getToPerson() {
-		return toPerson;
+	public Person getA() {
+		return a;
 	}
-	public void setToPerson(Person toPerson) {
-		this.toPerson = toPerson;
+	public void setA(Person a) {
+		this.a = a;
+	}
+	public Person getB() {
+		return b;
+	}
+	public void setB(Person b) {
+		this.b = b;
 	}
 	public String getRelationshipt() {
 		return relationshipt;
@@ -15,5 +21,4 @@ public class Relation {
 	public void setRelationshipt(String relationshipt) {
 		this.relationshipt = relationshipt;
 	}
-
 }
