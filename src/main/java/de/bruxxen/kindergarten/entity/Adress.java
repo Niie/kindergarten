@@ -32,8 +32,18 @@ public class Adress {
 		this.plz = plz;
 		this.city = city;
 		this.addition = addition;
-		this.id = id;
-		
+		this.id = id;	
+	}
+	public Adress(int id, String street, int plz, String city, String addition, int personId) {
+		this.street = street;
+		this.plz = plz;
+		this.city = city;
+		this.addition = addition;
+		this.id = id;	
+		this.personId = personId;
+	}
+	public Adress(int personId) {
+		this.personId = personId;
 	}
 	
 	public String getStreet() {
@@ -71,5 +81,8 @@ public class Adress {
 	}
 	public void setPersonId(int personId) {
 		this.personId = personId;
+	}
+	public String toString() {
+		return this.street + this.personId;
 	}
 }

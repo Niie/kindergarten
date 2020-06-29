@@ -22,8 +22,15 @@
 					<p:panelGrid/>
 					<p:panelGrid>
 						<p:commandButton value="#{loc.save}" action="#{adressenService.updateAdress(adress, 'listAdresse.xhtml')}"/>
-						<p:commandButton value="#{loc.back}" action="#{listAdressenService.navListAdresse()}"/>
-						<p:commandButton value="#{loc.delete}" action="#{adressenService.deleteAdress(adress)}"/>	
+						<p:commandButton value="#{loc.back}" action="#{listPersonenService.navEditPerson(adress)}"/>
+						<p:commandButton value="#{loc.delete}" action="#{adressenService.deleteAdress(adress)}">
+							<p:confirm header="#{loc.warning}" message="#{loc.deletePhoneNumberQ}"/>
+							</p:commandButton>	
+						
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					        <p:commandButton value="#{loc.yes}" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					        <p:commandButton value="#{loc.no}" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+					    </p:confirmDialog>  
 					</p:panelGrid>		
 				</h:panelGrid>				
 				</p:column>

@@ -16,34 +16,53 @@
 					<p:inputText id="firstName" value="#{person.firstName}"/>
 					<p:outputLabel value="#{loc.lastName}" for="lastName"/>
 					<p:inputText id="lastName" value="#{person.lastName}"/>
-					<p/>
+					
+					
+					<p:dataTable value="#{adressenService.tmpAdresses}" var="adress">
+						<f:facet name = "header">
+							<h:outputText value = "#{loc.adresses}:"/>	
+							</f:facet>	
+						<f:facet name="footer">
+							<p:commandButton value="#{loc.add}" action="#{adressenService.addNewA(person)}"/>
+							</f:facet>
+						<p:column>	
+							<h:panelGrid columns="2">	
+								<p:outputLabel value="#{adress.street}"/>
+								<p:commandButton value="#{loc.edit}" action="#{listAdressenService.navEditAdress(adress)}"/>	
+								</h:panelGrid>				
+							</p:column>
+						</p:dataTable>
+						
+						
 					<p:dataTable value="#{phoneNumberService.tmpPhoneNumbers}" var="phoneNumber">
-					<f:facet name = "header">
-						<h:outputText value = "#{loc.phoneNumber}:"/>	
-						</f:facet>	
-					<f:facet name="footer">
-						<p:commandButton value="#{loc.add}" action="#{phoneNumberService.addNewPN(person)}"/>
-					</f:facet>
-					<p:column>	
-					<h:panelGrid columns="2">	
-						<p:outputLabel value="#{phoneNumber.phoneNumber}"/>
-						<p:commandButton value="#{loc.edit}" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>	
-						</h:panelGrid>				
-						</p:column>
-					</p:dataTable>
+						<f:facet name = "header">
+							<h:outputText value = "#{loc.phoneNumbers}:"/>	
+							</f:facet>	
+						<f:facet name="footer">
+							<p:commandButton value="#{loc.add}" action="#{phoneNumberService.addNewPN(person)}"/>
+							</f:facet>
+						<p:column>	
+							<h:panelGrid columns="2">	
+								<p:outputLabel value="#{phoneNumber.phoneNumber}"/>
+								<p:commandButton value="#{loc.edit}" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>	
+								</h:panelGrid>				
+							</p:column>
+						</p:dataTable>
+						
+						
 					<p:panelGrid/>
-					<p:panelGrid>
-						<p:commandButton value="#{loc.save}" action="#{personenService.updatePerson(person, 'listPerson.xhtml')}"/>
-						<p:commandButton value="#{loc.back}" action="#{listPersonenService.navListPerson()}"/>
-						<p:commandButton value="#{loc.delete}" action="#{personenService.deletePerson(person)}">
-							<p:confirm header="#{loc.warning}" message="#{loc.deletePersonQ}"/>
-						</p:commandButton>		
-						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-					        <p:commandButton value="#{loc.yes}" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-					        <p:commandButton value="#{loc.no}" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-					    </p:confirmDialog>  
-					</p:panelGrid>		
-				</h:panelGrid>				
+						<p:panelGrid>
+							<p:commandButton value="#{loc.save}" action="#{personenService.updatePerson(person, 'listPerson.xhtml')}"/>
+							<p:commandButton value="#{loc.back}" action="#{listPersonenService.navListPerson()}"/>
+							<p:commandButton value="#{loc.delete}" action="#{personenService.deletePerson(person)}">
+								<p:confirm header="#{loc.warning}" message="#{loc.deletePersonQ}"/>
+								</p:commandButton>		
+							<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					        	<p:commandButton value="#{loc.yes}" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					        	<p:commandButton value="#{loc.no}" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+					    		</p:confirmDialog>  
+						</p:panelGrid>		
+					</h:panelGrid>				
 				</p:column>
 			</p:dataTable>
 			</h:form>

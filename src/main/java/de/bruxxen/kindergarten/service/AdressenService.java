@@ -11,6 +11,8 @@ import javax.inject.Named;
 import de.bruxxen.kindergarten.User;
 import de.bruxxen.kindergarten.data.DBAdresses;
 import de.bruxxen.kindergarten.entity.Adress;
+import de.bruxxen.kindergarten.entity.Person;
+import de.bruxxen.kindergarten.entity.PhoneNumber;
 
 @Named
 @SessionScoped
@@ -21,6 +23,8 @@ public class AdressenService implements Serializable {
 	private Adress emptyAdress = new Adress();
 	@Inject
 	private User user;
+	@Inject
+	private ListPersonenService lps;
 
 	public AdressenService() {
 		try {
@@ -36,6 +40,14 @@ public class AdressenService implements Serializable {
 	public void setTmpAdresses(ArrayList<Adress> tmpAdresses) {
 		this.tmpAdresses = tmpAdresses;
 	}
+	public void setTmpAdresses(Person p) {
+		try {
+			this.tmpAdresses = this.dbAdressen.getAllAdressesFromPerson(p);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public Adress getEmptyAdress() {
 		return emptyAdress;
 	}
@@ -70,20 +82,30 @@ public class AdressenService implements Serializable {
 	public String updateAdress(Adress a, String nav) {
 		try {
 			this.dbAdressen.updateAdress(a);
-			this.tmpAdresses = this.dbAdressen.getAdress();
+			System.out.print(a.getPersonId());
+			return this.lps.navEditPerson(a.getPersonId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
 		return nav;
 	}
-	public void insertAdress(Adress a) {
+	public String insertAdress(Adress a) {
 		try {
+			System.out.print(a.toString());
 			this.dbAdressen.insertAdress(a);
+			this.emptyAdress = null;
+			return lps.navEditPerson(a);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
+		return "";
 	}
-	public void deleteAdress(Adress a) {
+	public String deleteAdress(Adress a) {
 		this.dbAdressen.deleteAdress(a);	
+		return lps.navEditPerson(a);
+	}
+	public String addNewA(Person p) {
+		this.setEmptyAdress(new Adress(p.getId()));
+		return "insertAdresse.xhtml";
 	}
 }
