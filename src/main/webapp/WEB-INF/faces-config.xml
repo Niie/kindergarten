@@ -23,4 +23,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
+<application>
+	<locale-config>
+		<default-locale>de</default-locale>
+	</locale-config>
+	<message-bundle>de.bruxxen.kindergarten.loc.messages</message-bundle>
+	<resource-bundle>
+		<base-name>de.bruxxen.kindergarten.loc.messages</base-name>
+		<var>loc</var>
+	</resource-bundle>
+</application>
 </faces-config>

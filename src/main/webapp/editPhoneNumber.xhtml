@@ -6,7 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 	<ui:define name="content">
-		<h2>editAdresse</h2>
+		<h2>#{loc.list_phoneNumbers2}123</h2>
 			<h:form>
 			<p:dataTable value="#{phoneNumberService.tmpPhoneNumbers}" var="phoneNumber" rows="2">
 				<p:column>
@@ -15,7 +15,7 @@
 					<p:inputText id="phoneNumber" value="#{phoneNumber.phoneNumber}"/>
 					<p:panelGrid/>
 					<p:panelGrid>
-						<p:commandButton value="Speichern" action="#{phoneNumberService.updatePhoneNumber(phoneNumber, 'listPhoneNumber.xhtml')}"/>
+						<p:commandButton value="Speichern" action="#{phoneNumberService.updatePhoneNumber(phoneNumber, 'editPerson.xhtml')}"/>
 						<p:commandButton value="Zurück" action="#{listPhoneNumberService.navListPhoneNumber()}"/>
 						<p:commandButton value="Löschen" action="#{phoneNumberService.deletePhoneNumber(phoneNumber)}"/>	
 					</p:panelGrid>		

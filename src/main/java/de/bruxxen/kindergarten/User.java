@@ -12,8 +12,15 @@ import de.bruxxen.kindergarten.entity.Adress;
 @SessionScoped
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
+	private String redirect = "";
 	private int tmpID = 0;
 	
+	public String getRedirect() {
+		return redirect;
+	}
+	public void setRedirect(String redirect) {
+		this.redirect = redirect;
+	}
 	public int getTmpID() {
 		return tmpID;
 	}

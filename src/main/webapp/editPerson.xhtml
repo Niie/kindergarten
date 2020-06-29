@@ -15,14 +15,16 @@
 					<p:inputText id="firstName" value="#{person.firstName}"/>
 					<p:outputLabel value="Nachname:" for="lastName"/>
 					<p:inputText id="lastName" value="#{person.lastName}"/>
-					<h:panelGrid/>
+					<p/>
 					<p:dataTable value="#{phoneNumberService.tmpPhoneNumbers}" var="phoneNumber">
 					<f:facet name = "header">
 						<h:outputText value = "Telefonnummern:"/>
 						</f:facet>	
 					<p:column>	
+					<h:panelGrid columns="2">	
 						<p:outputLabel value="#{phoneNumber.phoneNumber}"/>
-						<p:commandButton value="Bearbeiten" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>					
+						<p:commandButton value="Bearbeiten" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>	
+						</h:panelGrid>				
 						</p:column>
 					</p:dataTable>
 					<p:panelGrid/>

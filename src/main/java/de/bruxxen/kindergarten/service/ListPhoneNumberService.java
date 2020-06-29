@@ -15,6 +15,7 @@ public class ListPhoneNumberService {
 	User user;
 	@Inject
 	PhoneNumberService pnService;
+	ListPersonenService lpService = new ListPersonenService();
 
 	public String navEditPhoneNumber(PhoneNumber pn) {
 		this.pnService.setTmpPhoneNumbers(this.pnService.getPhoneNumber(pn.getId()));
@@ -26,5 +27,8 @@ public class ListPhoneNumberService {
 	}
 	public String navNewPhoneNumber() {
 		return "insertPhoneNumber.xhtml";	
+	}
+	public void toEditPerson(int id) {
+		this.lpService.navEditPerson(id);
 	}
 }

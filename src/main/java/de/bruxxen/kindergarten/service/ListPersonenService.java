@@ -1,5 +1,7 @@
 package de.bruxxen.kindergarten.service;
 
+import java.util.ArrayList;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -21,6 +23,12 @@ public class ListPersonenService {
 	public String navEditPerson(Person p) {
 		this.pService.setTmpPersons(this.pService.getPerson(p.getId()));
 		this.pnService.setTmpPhoneNumbers(p);
+		return "editPerson.xhtml";	
+	}
+	public String navEditPerson(int id) {
+		ArrayList<Person> p = pService.getPerson(id);
+		this.pService.setTmpPersons(this.pService.getPerson(p.get(0).getId()));
+		this.pnService.setTmpPhoneNumbers(p.get(0));
 		return "editPerson.xhtml";	
 	}
 	public String navListPerson() {
