@@ -7,6 +7,7 @@
 
 	<ui:define name="content">
 		<h2>#{loc.persons}:</h2>
+		<h:outputScript library="js" name="confirmation.js" target="head"/>
 			<h:form>
 			<p:dataTable value="#{personenService.tmpPersons}" var="person" rows="2">
 				<p:column>
@@ -26,7 +27,9 @@
 					<p:column>	
 					<h:panelGrid columns="2">	
 						<p:outputLabel value="#{phoneNumber.phoneNumber}"/>
-						<p:commandButton value="#{loc.edit}" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>	
+						<p:commandButton value="#{loc.edit}" 
+								onclick="confirmation('editPerson.xhtml');"
+								action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>	
 						</h:panelGrid>				
 						</p:column>
 					</p:dataTable>
