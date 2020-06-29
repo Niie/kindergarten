@@ -11,7 +11,7 @@
 			<p:dataTable value="#{personenService.tmpPersons}" var="person">
 				<p:column>
 				<h:panelGrid columns="4">
-					<h:outputText value="#{person.firstName} in #{person.lastName}"/>
+					<h:outputText value="#{person.firstName} #{person.lastName}"/>
 						
 					<p:commandButton value="#{loc.edit}" action="#{listPersonenService.navEditPerson(person)}"/>	
 				</h:panelGrid>				

@@ -27,9 +27,7 @@
 					<p:column>	
 					<h:panelGrid columns="2">	
 						<p:outputLabel value="#{phoneNumber.phoneNumber}"/>
-						<p:commandButton value="#{loc.edit}" 
-								onclick="confirmation('editPerson.xhtml');"
-								action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>	
+						<p:commandButton value="#{loc.edit}" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>	
 						</h:panelGrid>				
 						</p:column>
 					</p:dataTable>
@@ -37,7 +35,13 @@
 					<p:panelGrid>
 						<p:commandButton value="#{loc.save}" action="#{personenService.updatePerson(person, 'listPerson.xhtml')}"/>
 						<p:commandButton value="#{loc.back}" action="#{listPersonenService.navListPerson()}"/>
-						<p:commandButton value="#{loc.delete}" action="#{personenService.deletePerson(person)}"/>	
+						<p:commandButton value="#{loc.delete}" action="#{personenService.deletePerson(person)}">
+							<p:confirm header="#{loc.warning}" message="#{loc.deletePersonQ}"/>
+						</p:commandButton>		
+						<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					        <p:commandButton value="#{loc.yes}" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+					        <p:commandButton value="#{loc.no}" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+					    </p:confirmDialog>  
 					</p:panelGrid>		
 				</h:panelGrid>				
 				</p:column>
