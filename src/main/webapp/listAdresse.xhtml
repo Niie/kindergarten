@@ -6,18 +6,18 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 	<ui:define name="content">
-		<h2>editAdresse</h2>
+		<h2>#{loc.adresses}</h2>
 			<h:form>
 			<p:dataTable value="#{adressenService.tmpAdresses}" var="adress">
 				<p:column>
 				<h:panelGrid columns="4">
 					<h:outputText value="#{adress.street} in #{adress.plz} #{adress.city}"/>
 						
-					<p:commandButton value="Bearbeiten" action="#{listAdressenService.navEditAdress(adress)}"/>			
+					<p:commandButton value="#{loc.edit}" action="#{listAdressenService.navEditAdress(adress)}"/>			
 				</h:panelGrid>				
 				</p:column>
 			</p:dataTable>
-			<p:commandButton value="Neue Adresse" action="#{listAdressenService.navNewAdresse()}"/>	
+			<p:commandButton value="#{loc.newAdress}" action="#{listAdressenService.navNewAdresse()}"/>	
 			</h:form>
 	</ui:define>
 </ui:composition>

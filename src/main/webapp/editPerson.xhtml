@@ -6,32 +6,35 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 	<ui:define name="content">
-		<h2>editAdresse</h2>
+		<h2>#{loc.persons}:</h2>
 			<h:form>
 			<p:dataTable value="#{personenService.tmpPersons}" var="person" rows="2">
 				<p:column>
 				<h:panelGrid columns="2">
-					<p:outputLabel value="Vorname:" for="firstName"/>
+					<p:outputLabel value="#{loc.firstName}" for="firstName"/>
 					<p:inputText id="firstName" value="#{person.firstName}"/>
-					<p:outputLabel value="Nachname:" for="lastName"/>
+					<p:outputLabel value="#{loc.lastName}" for="lastName"/>
 					<p:inputText id="lastName" value="#{person.lastName}"/>
 					<p/>
 					<p:dataTable value="#{phoneNumberService.tmpPhoneNumbers}" var="phoneNumber">
 					<f:facet name = "header">
-						<h:outputText value = "Telefonnummern:"/>
+						<h:outputText value = "#{loc.phoneNumber}:"/>	
 						</f:facet>	
+					<f:facet name="footer">
+						<p:commandButton value="#{loc.add}" action="#{phoneNumberService.addNewPN(person)}"/>
+					</f:facet>
 					<p:column>	
 					<h:panelGrid columns="2">	
 						<p:outputLabel value="#{phoneNumber.phoneNumber}"/>
-						<p:commandButton value="Bearbeiten" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>	
+						<p:commandButton value="#{loc.edit}" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>	
 						</h:panelGrid>				
 						</p:column>
 					</p:dataTable>
 					<p:panelGrid/>
 					<p:panelGrid>
-						<p:commandButton value="Speichern" action="#{personenService.updatePerson(person, 'listPerson.xhtml')}"/>
-						<p:commandButton value="Zurück" action="#{listPersonenService.navListPerson()}"/>
-						<p:commandButton value="Löschen" action="#{personenService.deletePerson(person)}"/>	
+						<p:commandButton value="#{loc.save}" action="#{personenService.updatePerson(person, 'listPerson.xhtml')}"/>
+						<p:commandButton value="#{loc.back}" action="#{listPersonenService.navListPerson()}"/>
+						<p:commandButton value="#{loc.delete}" action="#{personenService.deletePerson(person)}"/>	
 					</p:panelGrid>		
 				</h:panelGrid>				
 				</p:column>

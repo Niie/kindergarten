@@ -6,17 +6,19 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 	<ui:define name="content">
-		<h2>insertAdresse</h2>
+		<h2>#{loc.newPhoneNumber}</h2>
 			<h:form>
 			<p:dataTable value="#{phoneNumberService.emptyPhoneNumber}" var="phoneNumber" rows="2">
 				<p:column>
 				<h:panelGrid columns="2">
-					<p:outputLabel value="Telefonnummer" for="phoneNumber"/>
+					<p:outputLabel value="#{loc.phoneNumber}" for="phoneNumber"/>
 					<p:inputText id="phoneNumber" value="#{phoneNumber.phoneNumber}"/>
-					<p:outputLabel value="id_person" for="id_person"/>
-					<p:inputText id="id_person" value="#{phoneNumber.id_person}"/>
-
-					<p:commandButton value="Einfügen" action="#{phoneNumberService.insertPhoneNumber(phoneNumber)}"/>		
+					<!--  <p:outputLabel value="#{loc.id_person}" for="id_person"/>
+					<p:inputText id="id_person" value="#{phoneNumber.id_person}"/>-->
+					<p:panelGrid columns="2">
+						<p:commandButton value="#{loc.add}" action="#{phoneNumberService.insertPhoneNumber(phoneNumber)}"/>	
+						<p:commandButton value="#{loc.back}" action="#{listPersonenService.navEditPerson(phoneNumber)}"/>
+					</p:panelGrid>	
 				</h:panelGrid>				
 				</p:column>
 			</p:dataTable>

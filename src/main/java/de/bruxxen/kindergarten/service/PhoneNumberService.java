@@ -20,7 +20,11 @@ public class PhoneNumberService implements Serializable {
 	private DBPhoneNumbers DBPhoneNumbers = new DBPhoneNumbers();
 	private ArrayList<PhoneNumber> tmpPhoneNumbers = new ArrayList<PhoneNumber>();
 	private PhoneNumber emptyPhoneNumber = new PhoneNumber();
-	private ListPhoneNumberService lpns = new ListPhoneNumberService();
+	private PhoneNumber toInsertPN;
+	@Inject
+	private ListPhoneNumberService lpns;
+	@Inject
+	private ListPersonenService lps;
 	@Inject
 	private User user;
 
@@ -79,22 +83,28 @@ public class PhoneNumberService implements Serializable {
 	public String updatePhoneNumber(PhoneNumber a, String nav) {
 		try {
 			this.DBPhoneNumbers.updatePhoneNumber(a);
-			this.tmpPhoneNumbers = this.DBPhoneNumbers.getPhoneNumber();
-			lpns.toEditPerson(a.getId());
-			return null;
+			return lps.navEditPerson(a);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
 		return nav;
 	}
-	public void insertPhoneNumber(PhoneNumber a) {
+	public String insertPhoneNumber(PhoneNumber a) {
 		try {
 			this.DBPhoneNumbers.insertPhoneNumber(a);
+			this.emptyPhoneNumber = null;
+			return lps.navEditPerson(a);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}	
+		return "";
 	}
-	public void deletePhoneNumber(PhoneNumber a) {
+	public String deletePhoneNumber(PhoneNumber a) {
 		this.DBPhoneNumbers.deletePhoneNumber(a);	
+		return lps.navEditPerson(a);
+	}
+	public String addNewPN(Person p) {
+		this.setEmptyPhoneNumber(new PhoneNumber(p.getId()));
+		return "insertPhoneNumber.xhtml";
 	}
 }

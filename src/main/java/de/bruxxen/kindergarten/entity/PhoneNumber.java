@@ -11,6 +11,9 @@ public class PhoneNumber {
 		this.phoneNumber = phoneNumber;
 		this.id_person = id_person;
 	}
+	public PhoneNumber(int id_person) {
+		this.id_person = id_person;
+	}
 
 	public int getId() {
 		return id;

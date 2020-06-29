@@ -6,20 +6,20 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 	<ui:define name="content">
-		<h2>insertAdresse</h2>
+		<h2>#{loc.newAdress}</h2>
 			<h:form>
 			<p:dataTable value="#{adressenService.emptyAdress}" var="adress" rows="2">
 				<p:column>
 				<h:panelGrid columns="2">
-					<p:outputLabel value="Straße:" for="street"/>
+					<p:outputLabel value="#{loc.street}" for="street"/>
 					<p:inputText id="street" value="#{adress.street}"/>
-					<p:outputLabel value="Stadt:" for="city"/>
+					<p:outputLabel value="#{loc.city}:" for="city"/>
 					<p:inputText id="city" value="#{adress.city}"/>
-					<p:outputLabel value="PLZ:" for="plz"/>
+					<p:outputLabel value="#{loc.plz}:" for="plz"/>
 					<p:inputText id="plz" value="#{adress.plz}"/>
-					<p:outputLabel value="Info:" for="info"/>
+					<p:outputLabel value="#{loc.info}:" for="info"/>
 					<p:inputTextarea id="info" value="#{adress.addition}"/>	
-					<p:commandButton value="Einfügen" action="#{adressenService.insertAdress(adress)}"/>		
+					<p:commandButton value="#{loc.add}" action="#{adressenService.insertAdress(adress)}"/>		
 				</h:panelGrid>				
 				</p:column>
 			</p:dataTable>

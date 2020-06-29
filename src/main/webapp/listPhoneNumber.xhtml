@@ -6,17 +6,17 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 	<ui:define name="content">
-		<h2>editAdresse</h2>
+		<h2>#{loc.phoneNumbers}</h2>
 			<h:form>
 			<p:dataTable value="#{phoneNumberService.tmpPhoneNumbers}" var="phoneNumber">
 				<p:column>
 				<h:panelGrid columns="2">
 					<h:outputText value="Telefonnummer: #{phoneNumber.phoneNumber}"/>					
-					<p:commandButton value="Bearbeiten" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>		
+					<p:commandButton value="#{loc.edit}" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>		
 				</h:panelGrid>				
 				</p:column>
 			</p:dataTable>
-			<p:commandButton value="Neue Nummer" action="#{listPhoneNumberService.navNewPhoneNumber()}"/>	
+			<p:commandButton value="#{loc.newPhoneNumber}" action="#{listPhoneNumberService.navNewPhoneNumber()}"/>	
 			</h:form>
 	</ui:define>
 </ui:composition>

@@ -6,18 +6,18 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 	<ui:define name="content">
-		<h2>listPerson</h2>
+		<h2>#{loc.persons}</h2>
 			<h:form>
 			<p:dataTable value="#{personenService.tmpPersons}" var="person">
 				<p:column>
 				<h:panelGrid columns="4">
 					<h:outputText value="#{person.firstName} in #{person.lastName}"/>
 						
-					<p:commandButton value="Bearbeiten" action="#{listPersonenService.navEditPerson(person)}"/>	
+					<p:commandButton value="#{loc.edit}" action="#{listPersonenService.navEditPerson(person)}"/>	
 				</h:panelGrid>				
 				</p:column>
 			</p:dataTable>
-			<p:commandButton value="Neue Person" action="#{listPersonenService.navNewPerson()}"/>	
+			<p:commandButton value="#{loc.newPerson}" action="#{listPersonenService.navNewPerson()}"/>	
 			</h:form>
 	</ui:define>
 </ui:composition>

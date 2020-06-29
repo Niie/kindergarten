@@ -6,24 +6,24 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 	<ui:define name="content">
-		<h2>editAdresse</h2>
+		<h2>#{loc.adresses}</h2>
 			<h:form>
 			<p:dataTable value="#{adressenService.tmpAdresses}" var="adress" rows="2">
 				<p:column>
 				<h:panelGrid columns="2">
-					<p:outputLabel value="Straße:" for="street"/>
+					<p:outputLabel value="#{loc.street}:" for="street"/>
 					<p:inputText id="street" value="#{adress.street}"/>
-					<p:outputLabel value="Stadt:" for="city"/>
+					<p:outputLabel value="#{loc.city}:" for="city"/>
 					<p:inputText id="city" value="#{adress.city}"/>
-					<p:outputLabel value="PLZ:" for="plz"/>
+					<p:outputLabel value="#{loc.plz}:" for="plz"/>
 					<p:inputText id="plz" value="#{adress.plz}"/>
-					<p:outputLabel value="Info:" for="info"/>
+					<p:outputLabel value="#{loc.info}:" for="info"/>
 					<p:inputTextarea id="info" value="#{adress.addition}"/>	
 					<p:panelGrid/>
 					<p:panelGrid>
-						<p:commandButton value="Speichern" action="#{adressenService.updateAdress(adress, 'listAdresse.xhtml')}"/>
-						<p:commandButton value="Zurück" action="#{listAdressenService.navListAdresse()}"/>
-						<p:commandButton value="Löschen" action="#{adressenService.deleteAdress(adress)}"/>	
+						<p:commandButton value="#{loc.save}" action="#{adressenService.updateAdress(adress, 'listAdresse.xhtml')}"/>
+						<p:commandButton value="#{loc.back}" action="#{listAdressenService.navListAdresse()}"/>
+						<p:commandButton value="#{loc.delete}" action="#{adressenService.deleteAdress(adress)}"/>	
 					</p:panelGrid>		
 				</h:panelGrid>				
 				</p:column>

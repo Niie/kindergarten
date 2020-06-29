@@ -16,9 +16,9 @@ public class ListPersonenService {
 	@Inject
 	User user;
 	@Inject
-	PersonenService pService;
+	PersonenService pService = new PersonenService();
 	@Inject
-	PhoneNumberService pnService;
+	PhoneNumberService pnService = new PhoneNumberService();
 
 	public String navEditPerson(Person p) {
 		this.pService.setTmpPersons(this.pService.getPerson(p.getId()));
@@ -26,10 +26,14 @@ public class ListPersonenService {
 		return "editPerson.xhtml";	
 	}
 	public String navEditPerson(int id) {
-		ArrayList<Person> p = pService.getPerson(id);
-		this.pService.setTmpPersons(this.pService.getPerson(p.get(0).getId()));
-		this.pnService.setTmpPhoneNumbers(p.get(0));
-		return "editPerson.xhtml";	
+		ArrayList<Person> pl = pService.getPerson(id);
+		Person p = pl.get(0);
+		return this.navEditPerson(p);
+	}
+	public String navEditPerson(PhoneNumber pn) {
+		ArrayList<Person> pl = pService.getPerson(pn.getId_person());
+		Person p = pl.get(0);
+		return this.navEditPerson(p);
 	}
 	public String navListPerson() {
 		this.pService.setTmpPersons(this.pService.getPerson());

@@ -6,17 +6,17 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 	<ui:define name="content">
-		<h2>insertPerson</h2>
+		<h2>#{loc.newPerson}</h2>
 			<h:form>
 			<p:dataTable value="#{personenService.emptyPerson}" var="person" rows="2">
 				<p:column>
 				<h:panelGrid columns="2">
-					<p:outputLabel value="Vorname:" for="firstName"/>
+					<p:outputLabel value="#{loc.firstName}" for="firstName"/>
 					<p:inputText id="firstName" value="#{person.firstName}"/>
-					<p:outputLabel value="Nachname:" for="lastName"/>
+					<p:outputLabel value="#{loc.lastName}" for="lastName"/>
 					<p:inputText id="lastName" value="#{person.lastName}"/>
 
-					<p:commandButton value="Einfügen" action="#{personenService.insertPerson(person)}"/>		
+					<p:commandButton value="#{loc.add}" action="#{personenService.insertPerson(person)}"/>		
 				</h:panelGrid>				
 				</p:column>
 			</p:dataTable>
