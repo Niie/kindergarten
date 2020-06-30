@@ -4,3 +4,16 @@
 #phoneNumberTable{
 	display:none;
 }
+.ui-button-text.ui-c.Habsta{
+	length:250px;
+	font-size:40px; 
+}
+.Habsta{
+	length:250px;
+	font-size:40px; 
+}
+span.ui-button-text.ui-c {
+    padding: 12px 28px;
+    font-size: 10px;
+    width: 100px;
+}

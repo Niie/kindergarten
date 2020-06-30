@@ -7,7 +7,7 @@
 
 	<ui:define name="content">
 		<h2>#{loc.persons}:</h2>
-		<h:outputStylesheet library="css" name="editPerson.css" target="head"/>
+		<h:outputStylesheet library="css" name="editPerson.css" target="body"/>
 		<h:outputScript library="js" name="showHide.js" target="head"/>
 		<h:outputScript library="js" name="confirmation.js" target="head"/>
 			<h:form>
@@ -22,7 +22,7 @@
 						<p:commandButton value="#{loc.adresses}">
 							<f:ajax onevent="showHideToggle('adressTable')"/>
 						</p:commandButton>	<br/>
-						<p:commandButton value="#{loc.phoneNumbers}">
+						<p:commandButton value="#{loc.phoneNumbers}" styleClass="Habsta">
 							<f:ajax onevent="showHideToggle('phoneNumberTable')"/>
 						</p:commandButton>	
 					</p:panelGrid>			
