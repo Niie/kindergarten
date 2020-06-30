@@ -8,7 +8,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import de.bruxxen.kindergarten.User;
+import de.bruxxen.kindergarten.entity.User;
 import de.bruxxen.kindergarten.data.DBPersonen;
 import de.bruxxen.kindergarten.entity.Person;
 
@@ -31,7 +31,9 @@ public class PersonenService implements Serializable {
 	}
 	
 	public ArrayList<Person> getTmpPersons() {
-		return tmpPersons;
+		System.out.print(" getTmpPerson: " + this.user.getSecurityLvl());
+		if (user.getSecurityLvl() > 2) return tmpPersons;
+		else return null;
 	}
 	public void setTmpPersons(ArrayList<Person> tmpPersons) {
 		this.tmpPersons = tmpPersons;
