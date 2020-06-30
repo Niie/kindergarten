@@ -7,6 +7,8 @@
 
 	<ui:define name="content">
 		<h2>#{loc.persons}:</h2>
+		<h:outputStylesheet library="css" name="editPerson.css" target="head"/>
+		<h:outputScript library="js" name="showHide.js" target="head"/>
 		<h:outputScript library="js" name="confirmation.js" target="head"/>
 			<h:form>
 			<p:dataTable value="#{personenService.tmpPersons}" var="person" rows="2">
@@ -16,41 +18,14 @@
 					<p:inputText id="firstName" value="#{person.firstName}"/>
 					<p:outputLabel value="#{loc.lastName}" for="lastName"/>
 					<p:inputText id="lastName" value="#{person.lastName}"/>
-					
-					
-					<p:dataTable value="#{adressenService.tmpAdresses}" var="adress">
-						<f:facet name = "header">
-							<h:outputText value = "#{loc.adresses}:"/>	
-							</f:facet>	
-						<f:facet name="footer">
-							<p:commandButton value="#{loc.add}" action="#{adressenService.addNewA(person)}"/>
-							</f:facet>
-						<p:column>	
-							<h:panelGrid columns="2">	
-								<p:outputLabel value="#{adress.street}"/>
-								<p:commandButton value="#{loc.edit}" action="#{listAdressenService.navEditAdress(adress)}"/>	
-								</h:panelGrid>				
-							</p:column>
-						</p:dataTable>
-						
-						
-					<p:dataTable value="#{phoneNumberService.tmpPhoneNumbers}" var="phoneNumber">
-						<f:facet name = "header">
-							<h:outputText value = "#{loc.phoneNumbers}:"/>	
-							</f:facet>	
-						<f:facet name="footer">
-							<p:commandButton value="#{loc.add}" action="#{phoneNumberService.addNewPN(person)}"/>
-							</f:facet>
-						<p:column>	
-							<h:panelGrid columns="2">	
-								<p:outputLabel value="#{phoneNumber.phoneNumber}"/>
-								<p:commandButton value="#{loc.edit}" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>	
-								</h:panelGrid>				
-							</p:column>
-						</p:dataTable>
-						
-						
-					<p:panelGrid/>
+					<p:panelGrid>
+						<p:commandButton value="#{loc.adresses}">
+							<f:ajax onevent="showHideToggle('adressTable')"/>
+						</p:commandButton>	<br/>
+						<p:commandButton value="#{loc.phoneNumbers}">
+							<f:ajax onevent="showHideToggle('phoneNumberTable')"/>
+						</p:commandButton>	
+					</p:panelGrid>			
 						<p:panelGrid>
 							<p:commandButton value="#{loc.save}" action="#{personenService.updatePerson(person, 'listPerson.xhtml')}"/>
 							<p:commandButton value="#{loc.back}" action="#{listPersonenService.navListPerson()}"/>
@@ -65,6 +40,39 @@
 					</h:panelGrid>				
 				</p:column>
 			</p:dataTable>
+			<div id="phoneNumberTable">
+				<p:dataTable value="#{phoneNumberService.tmpPhoneNumbers}" var="phoneNumber">
+						<f:facet name = "header">
+							<h:outputText value = "#{loc.phoneNumbers}:"/>	
+							</f:facet>	
+						<f:facet name="footer">
+							<p:commandButton value="#{loc.add}" action="#{phoneNumberService.addNewPN(person)}"/>
+							</f:facet>
+						<p:column>	
+							<h:panelGrid columns="2">	
+								<p:outputLabel value="#{phoneNumber.phoneNumber}"/>
+								<p:commandButton value="#{loc.edit}" action="#{listPhoneNumberService.navEditPhoneNumber(phoneNumber)}"/>	
+								</h:panelGrid>				
+							</p:column>
+						</p:dataTable>
+			</div>
+			<div id="adressTable">
+					
+				<p:dataTable  value="#{adressenService.tmpAdresses}" var="adress">
+					<f:facet name = "header">
+						<h:outputText value = "#{loc.adresses}:"/>	
+						</f:facet>	
+					<f:facet name="footer">
+						<p:commandButton value="#{loc.add}" action="#{adressenService.addNewA(person)}"/>
+						</f:facet>
+					<p:column>	
+						<h:panelGrid columns="2">	
+							<p:outputLabel value="#{adress.street}"/>
+							<p:commandButton value="#{loc.edit}" action="#{listAdressenService.navEditAdress(adress)}"/>	
+							</h:panelGrid>				
+						</p:column>
+					</p:dataTable>
+				</div>
 			</h:form>
 	</ui:define>
 </ui:composition>
