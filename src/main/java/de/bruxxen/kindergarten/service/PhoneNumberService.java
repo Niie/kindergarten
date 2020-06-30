@@ -8,7 +8,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import de.bruxxen.kindergarten.User;
+import de.bruxxen.kindergarten.entity.User;
 import de.bruxxen.kindergarten.data.DBPhoneNumbers;
 import de.bruxxen.kindergarten.entity.Person;
 import de.bruxxen.kindergarten.entity.PhoneNumber;

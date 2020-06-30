@@ -1,0 +1,22 @@
+<ui:composition template="templates/mainTemplate.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:p="http://primefaces.org/ui"  
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<ui:define name="content">
+		<h2>#{loc.login}</h2>
+		<h:form>
+			<p:outputLabel for="username" value="#{loc.username}"/>
+			<p:inputText id="username" value="#{user.username}" /><br/>
+			<p:outputLabel for="password" value="#{loc.password}"/>
+			<p:inputText id="password" value="#{user.password}" /><br/>
+			<p:commandButton value="#{loc.logIn}" action="#{userService.logIn()}"/>	
+			<br/>
+			<p:outputLabel value="#{user.password} #{user.username}"/>
+		</h:form>
+		
+		
+	</ui:define>
+</ui:composition>
