@@ -75,6 +75,7 @@ public class DBUser {
 	public ArrayList<User> getUser(User u) throws SQLException{
 		if (u.getId() != 0)	return this.getUser(u.getId());
 		else return this.getUser(u.getUsername());
+	}
 
 
 	public void insertUser(User u) throws SQLException{
