@@ -10,14 +10,6 @@
       <h:panelGroup styleClass="headerWrapper">
       	<br/>
       	<h:form>
-      	<h:link value="Aktuelles" outcome="impressum.xhtml" styleClass="headerLink" />
-      	<h:outputText value=" || "/>
-      	<h:link value="Unser Kindergarten" outcome="impressum.xhtml" styleClass="headerLink" />
-      	<h:outputText value=" || "></h:outputText>
-      	<h:link value="Kontakt" outcome="impressum.xhtml" styleClass="headerLink" />
-      	<h:outputText value=" || "/>
-      	<h:link value="Elternbereich" outcome="impressum.xhtml" styleClass="headerLink" />
-      	<h:outputText value=" || "/>
 		<h:commandLink value="listPhoneNumbers" action="#{listPhoneNumberService.navListPhoneNumber()}" styleClass="headerLink" />
       	<h:outputText value=" || "/>
       	<h:commandLink value="listAdresse" action="#{listAdressenService.navListAdresse()}" styleClass="headerLink" />
@@ -28,6 +20,8 @@
       	<h:outputText value=" || " rendered="#{user.securityLvl == 0}"/>
       	<h:commandLink value="instaLogIn" action="#{userService.instaLogIn()}" styleClass="headerLink" rendered="#{user.securityLvl == 0}"/>
       	<h:commandLink value="logOut (#{user.username})" action="#{userService.logOut()}" styleClass="headerLink" rendered="#{user.securityLvl > 0}"/>
+     	<h:outputText value=" || "/>
+      	<h:commandLink value="testFlow" action="flow1" styleClass="headerLink" /> 	
      	</h:form>											 
       </h:panelGroup>
       

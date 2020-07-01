@@ -31,7 +31,6 @@ public class PersonenService implements Serializable {
 	}
 	
 	public ArrayList<Person> getTmpPersons() {
-		System.out.print(" getTmpPerson: " + this.user.getSecurityLvl());
 		if (user.getSecurityLvl() > 2) return tmpPersons;
 		else return null;
 	}
