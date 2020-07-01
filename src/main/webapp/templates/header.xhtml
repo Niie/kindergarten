@@ -20,8 +20,6 @@
       	<h:outputText value=" || " rendered="#{user.securityLvl == 0}"/>
       	<h:commandLink value="instaLogIn" action="#{userService.instaLogIn()}" styleClass="headerLink" rendered="#{user.securityLvl == 0}"/>
       	<h:commandLink value="logOut (#{user.username})" action="#{userService.logOut()}" styleClass="headerLink" rendered="#{user.securityLvl > 0}"/>
-     	<h:outputText value=" || "/>
-      	<h:commandLink value="testFlow" action="flow1" styleClass="headerLink" /> 	
      	</h:form>											 
       </h:panelGroup>
       
